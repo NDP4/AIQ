@@ -88,6 +88,7 @@ def ai_chat():
                     "model": model_id,
                     "messages": [{"role": "user", "content": user_input}],
                     "max_tokens": 1000,
+                    # "stream": True  # Mengaktifkan streaming
                 }
                 response = requests.post(GROQ_API_URL, headers=headers, json=payload)
                 if response.status_code == 200:
@@ -140,9 +141,10 @@ def ai_chat():
                 unsafe_allow_html=True
             )
 
-    # Copyright Section
-    current_year = datetime.now().year
-    st.markdown(f"<p style='text-align: center; margin-top: 50px;'>© {current_year} Nur Dwi Priyambodo</p>", unsafe_allow_html=True)
+# Fungsi untuk menampilkan copyright
+def display_copyright():
+    current_year = datetime.datetime.now().year
+    st.sidebar.markdown(f"<hr><center>&copy; {current_year} Nur Dwi Priyambodo. All rights reserved.</center>", unsafe_allow_html=True)
 
 # Main program
 def main():
@@ -168,3 +170,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    display_copyright()
