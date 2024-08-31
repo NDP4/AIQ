@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 from dotenv import load_dotenv
 import os
+import datetime
 
 # Load environment variables
 load_dotenv()
@@ -140,6 +141,11 @@ def ai_chat():
                 unsafe_allow_html=True
             )
 
+# Fungsi untuk menampilkan copyright
+def display_copyright():
+    current_year = datetime.datetime.now().year
+    st.sidebar.markdown(f"<hr><center>&copy; {current_year} Nur Dwi Priyambodo. All rights reserved.</center>", unsafe_allow_html=True)
+
 # Main program
 def main():
     st.sidebar.title("Login")
@@ -164,3 +170,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    display_copyright()
